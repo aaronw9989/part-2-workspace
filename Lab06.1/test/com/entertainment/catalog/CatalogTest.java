@@ -101,11 +101,10 @@ public class CatalogTest {
     List<Television> tvs = new ArrayList<>(Catalog.getInventory());
 
     // NOTE: when we have a list we can sort in natural order by passing a null
-    tvs.sort((tv1, tv2) -> {
-      // NOTE: use this for the Analyzer problem
-      return Integer.compare(tv1.getVolume(), tv2.getVolume());
-    });
-
+    // NOTE: use this for the Analyzer problem
+    // return Integer.compare(tv1.getVolume(), tv2.getVolume());
+    // NOTE: this is a method reference lambda
+    tvs.sort(Comparator.comparingInt(Television::getVolume));
     System.out.println(tvs);
   }
 
