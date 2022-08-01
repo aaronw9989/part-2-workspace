@@ -9,8 +9,12 @@
 package com.entertainment.catalog;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.junit.Test;
@@ -91,4 +95,19 @@ public class CatalogTest {
     assertEquals("Sony", loudest.getBrand());
     assertEquals(94, loudest.getVolume());
   }
+
+  @Test
+  public void testSortByVolume() {
+    List<Television> tvs = new ArrayList<>(Catalog.getInventory());
+
+    // NOTE: when we have a list we can sort in natural order by passing a null
+    tvs.sort((tv1, tv2) -> {
+      // NOTE: use this for the Analyzer problem
+      return Integer.compare(tv1.getVolume(), tv2.getVolume());
+    });
+
+    System.out.println(tvs);
+  }
+
+
 }
