@@ -11,5 +11,13 @@ public class MessagePrinterClient {
 
   public static void main(String[] args) {
     // TODO: create two instances of your thread subclass and start them up
+
+    // Run a thread without a reference
+    new MessagePrinter("taking a cat nap", 250).start();
+
+    // With a reference
+    Thread heavySleeper = new MessagePrinter("sleeping soundly", 1000);
+    heavySleeper.start();
+
   }
 }
